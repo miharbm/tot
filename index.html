@@ -1,521 +1,890 @@
 <!DOCTYPE html>
 <!-- saved from url=(0097)file:///C:/Project/%D0%9F%D0%A1%D0%91%D0%98%D0%98/Project/%D1%81%D0%B0%D0%B9%D1%82/maket3-1.html# -->
-<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Макет 3-1 — «Инженерный» на тёмном фоне (параллакс-картинка)</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-
-
-/* ============================================================
-   1. ПЕРЕМЕННЫЕ И СБРОС
-   ============================================================
-   Тёмная вариация инженерного макета. Принципы те же:
-   - navy из лого для фона
-   - один оранжевый акцент (только в H1 .accent и в hover)
-   - фиолет — на eyebrow `// 01` и в чипах `/0X`
-   - контентные карточки — полупрозрачные, чтобы читались на волне
-*/
-:root{
-  /* Цвета логотипа — основа */
-  --logo-violet:#ffffff;
-  --logo-orange:#ff5a1f;
-
-  /* Палитра — тёмная */
-  --bg:#0a1740;            /* основной фон-подложка под картинкой */
-  --bg-2:#0a1230;
-  --ink:#ffffff;            /* основной текст — белый */
-  --ink-2:#ffffff;          /*cbd5e1 вторичный текст — светло-серый */
-  --ink-3:#ffffff;          /* 94a3b8приглушённый */
-  --line:rgba(255,255,255,.14);
-
-  --accent:var(--logo-orange);
-  --accent-2:#e04812;
-  --violet-soft:rgba(123,63,242,.18);
-  --card:rgba(10,23,64,.55);   /* полупрозрачная карточка */
-
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-  --sans:'Inter',-apple-system,sans-serif;
-  --max:1280px;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:var(--sans),sans-serif;
-  color:var(--ink-2);
-  background:var(--bg);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-a{color:inherit;text-decoration:none}
-.container{max-width:var(--max);margin:0 auto;padding:0 32px}
-.mono{font-family:var(--mono),sans-serif}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Макет 3-1 — «Инженерный» на тёмном фоне (параллакс-картинка)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 
-/* ============================================================
-   2. HEADER
-   ============================================================
-   Тёмный, липкий, полупрозрачный — под ним видно волну.
-*/
-.header{
-  position:sticky;top:0;z-index:50;
-  background:rgba(10,23,64,.78);
-  backdrop-filter:saturate(180%) blur(14px);
-  -webkit-backdrop-filter:saturate(180%) blur(14px);
-  border-bottom:1px solid var(--line);
-}
-.header__row{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;align-items:center;color:#fff}
-.brand__mark{
-  display:block;
-  height:72px;
-  width:auto;
-  flex:0 0 auto;
-  filter:drop-shadow(0 4px 14px rgba(123,63,242,.25));
-}
-.nav{display:flex;gap:32px}
-.nav a{font-size:14px;color:var(--ink-2);transition:color .15s}
-.nav a:hover{color:var(--accent)}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 18px;
-  background:var(--ink);color:#0a1740;font-size:14px;font-weight:500;border-radius:6px;
-  transition:background .15s, color .15s;
-}
-.btn:hover{background:var(--accent);color:#fff}
+        /* ============================================================
+           1. ПЕРЕМЕННЫЕ И СБРОС
+           ============================================================
+           Тёмная вариация инженерного макета. Принципы те же:
+           - navy из лого для фона
+           - один оранжевый акцент (только в H1 .accent и в hover)
+           - фиолет — на eyebrow `// 01` и в чипах `/0X`
+           - контентные карточки — полупрозрачные, чтобы читались на волне
+        */
+        :root {
+            /* Цвета логотипа — основа */
+            --logo-violet: #ffffff;
+            --logo-orange: #ff5a1f;
+
+            /* Палитра — тёмная */
+            --bg: #0a1740; /* основной фон-подложка под картинкой */
+            --bg-2: #0a1230;
+            --ink: #ffffff; /* основной текст — белый */
+            --ink-2: #ffffff; /*cbd5e1 вторичный текст — светло-серый */
+            --ink-3: #ffffff; /* 94a3b8приглушённый */
+            --line: rgba(255, 255, 255, .14);
+
+            --accent: var(--logo-orange);
+            --accent-2: #e04812;
+            --violet-soft: rgba(123, 63, 242, .18);
+            --card: rgba(10, 23, 64, .55); /* полупрозрачная карточка */
+
+            --mono: 'JetBrains Mono', ui-monospace, monospace;
+            --sans: 'Inter', -apple-system, sans-serif;
+            --max: 1280px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: var(--sans), sans-serif;
+            color: var(--ink-2);
+            background: var(--bg);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .container {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 32px
+        }
+
+        .mono {
+            font-family: var(--mono), sans-serif
+        }
 
 
-/* ============================================================
-   3. HERO
-   ============================================================
-   Тонкий grid-фон, 2 колонки. Подпись крупно, поверх бэкграунда.
-*/
-.hero{
-  position:relative;overflow:hidden;
-  background:transparent;     /* сквозь hero просвечивает .bg-stage */
-}
-.hero::before{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
-  z-index:1;
-}
-.hero__inner{position:relative;z-index:2;padding:96px 0 120px;display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:end}
-.hero__left .signature{
-  display:block;
-  height:88px;
-  width:auto;
-  margin-bottom:32px;
-  filter:drop-shadow(0 8px 24px rgba(0,0,0,.5));
-}
-.hero__left .meta{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--mono), sans-serif;font-size:12px;letter-spacing:.04em;
-  color:var(--ink-3);margin-bottom:32px;
-}
-.hero__left .meta::before{content:"";width:32px;height:1px;background:var(--logo-violet)}
-.hero h1{
-  font-size:clamp(48px, 7vw, 96px);line-height:1.0;letter-spacing:-.04em;margin:0 0 32px;
-  font-weight:700;color:#fff;
-}
-.hero h1 .accent{color:var(--accent)}
-.hero p.lead{font-size:18px;line-height:1.55;color:var(--ink-2);max-width:600px;margin:0 0 40px}
-.hero__cta{display:flex;gap:12px;flex-wrap:wrap}
-.btn-outline{
-  display:inline-flex;align-items:center;height:42px;padding:0 18px;
-  border:1px solid rgba(255,255,255,.25);color:#fff;font-size:14px;font-weight:500;border-radius:6px;
-  transition:border-color .15s, color .15s, background .15s;
-}
-.btn-outline:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.06)}
+        /* ============================================================
+           2. HEADER
+           ============================================================
+           Тёмный, липкий, полупрозрачный — под ним видно волну.
+        */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 23, 64, .78);
+            backdrop-filter: saturate(180%) blur(14px);
+            -webkit-backdrop-filter: saturate(180%) blur(14px);
+            border-bottom: 1px solid var(--line);
+        }
 
-.hero__right{
-  border-left:1px solid var(--line);padding-left:32px;
-}
-.hero__right .stat-row{
-  padding:24px 0;border-bottom:1px solid var(--line);
-}
-.hero__right .stat-row:first-child{padding-top:0}
-.hero__right .stat-row:last-child{border-bottom:0}
-.hero__right .stat-row .label{
-  font-family:var(--mono),sans-serif;font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;
-}
-.hero__right .stat-row .val{font-size:32px;font-weight:700;letter-spacing:-.02em;color:#fff}
-.hero__right .stat-row .sub{color:var(--ink-2);font-size:13px;margin-top:4px}
+        .header__row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px
+        }
 
+        .brand {
+            display: flex;
+            align-items: center;
+            color: #fff
+        }
 
-/* ============================================================
-   4. ABOUT
-   ============================================================
-   2 колонки текста. Без фоновых карточек — текст и так читается
-   на полупрозрачном бэкграунде.
-*/
-section{padding:96px 0;position:relative;background:transparent}
-.section__head{margin-bottom:64px;max-width:840px}
-.section__head .label{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--mono),sans-serif;font-size:12px;color:var(--logo-violet);
-  letter-spacing:.04em;margin-bottom:20px;
-}
-.section__head .label::before{content:"";width:32px;height:1px;background:var(--logo-violet)}
-.section__head h2{font-size:clamp(36px, 5vw, 64px);line-height:1.05;letter-spacing:-.03em;margin:0 0 16px;font-weight:700;color:#fff}
-.section__head p{color:var(--ink-2);font-size:17px;margin:0;max-width:640px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-.about-grid__text p{font-size:16px;color:var(--ink-2);margin:0 0 16px}
-.about-grid__text p:first-child{font-size:18px;color:#fff;font-weight:500}
+        .brand__mark {
+            display: block;
+            height: 72px;
+            width: auto;
+            flex: 0 0 auto;
+            filter: drop-shadow(0 4px 14px rgba(123, 63, 242, .25));
+        }
+
+        .nav {
+            display: flex;
+            gap: 32px
+        }
+
+        .nav a {
+            font-size: 14px;
+            color: var(--ink-2);
+            transition: color .15s
+        }
+
+        .nav a:hover {
+            color: var(--accent)
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 42px;
+            padding: 0 18px;
+            background: var(--ink);
+            color: #0a1740;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background .15s, color .15s;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: #fff
+        }
 
 
-/* ============================================================
-   5. DIRECTIONS
-   ============================================================
-   4 столпа, каждый — полупрозрачная карточка с blur.
-*/
-.pillars{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-.pillar{
-  padding:32px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:10px;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.pillar__num{
-  font-family:var(--mono),sans-serif;font-size:12px;color:var(--logo-violet);
-  margin-bottom:24px;letter-spacing:.04em;
-  display:inline-block;padding:4px 10px;background:var(--violet-soft);border-radius:4px;
-}
-.pillar h3{font-size:20px;margin:0 0 12px;font-weight:600;letter-spacing:-.01em;color:#fff}
-.pillar p{color:var(--ink-2);font-size:14px;line-height:1.55;margin:0}
+        /* ============================================================
+           3. HERO
+           ============================================================
+           Тонкий grid-фон, 2 колонки. Подпись крупно, поверх бэкграунда.
+        */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: transparent; /* сквозь hero просвечивает .bg-stage */
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, .04) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, .04) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
+            z-index: 1;
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 2;
+            padding: 96px 0 120px;
+            display: grid;
+            grid-template-columns:1.4fr 1fr;
+            gap: 64px;
+            align-items: end
+        }
+
+        .hero__left .signature {
+            display: block;
+            height: 88px;
+            width: auto;
+            margin-bottom: 32px;
+            filter: drop-shadow(0 8px 24px rgba(0, 0, 0, .5));
+        }
+
+        .hero__left .meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono), sans-serif;
+            font-size: 12px;
+            letter-spacing: .04em;
+            color: var(--ink-3);
+            margin-bottom: 32px;
+        }
+
+        .hero__left .meta::before {
+            content: "";
+            width: 32px;
+            height: 1px;
+            background: var(--logo-violet)
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 96px);
+            line-height: 1.0;
+            letter-spacing: -.04em;
+            margin: 0 0 32px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent)
+        }
+
+        .hero p.lead {
+            font-size: 18px;
+            line-height: 1.55;
+            color: var(--ink-2);
+            max-width: 600px;
+            margin: 0 0 40px
+        }
+
+        .hero__cta {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            height: 42px;
+            padding: 0 18px;
+            border: 1px solid rgba(255, 255, 255, .25);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: border-color .15s, color .15s, background .15s;
+        }
+
+        .btn-outline:hover {
+            border-color: #fff;
+            color: #fff;
+            background: rgba(255, 255, 255, .06)
+        }
+
+        .hero__right {
+            border-left: 1px solid var(--line);
+            padding-left: 32px;
+        }
+
+        .hero__right .stat-row {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .hero__right .stat-row:first-child {
+            padding-top: 0
+        }
+
+        .hero__right .stat-row:last-child {
+            border-bottom: 0
+        }
+
+        .hero__right .stat-row .label {
+            font-family: var(--mono), sans-serif;
+            font-size: 11px;
+            color: var(--ink-3);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .hero__right .stat-row .val {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            color: #fff
+        }
+
+        .hero__right .stat-row .sub {
+            color: var(--ink-2);
+            font-size: 13px;
+            margin-top: 4px
+        }
 
 
-/* ============================================================
-   6. NUMBERS
-   ============================================================
-   4 крупных числа, каждое в полупрозрачной карточке.
-*/
-.numbers{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-.n{
-  padding:32px 24px;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:10px;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.n__label{font-family:var(--mono),sans-serif;font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
-.n__val{font-size:64px;font-weight:700;letter-spacing:-.04em;line-height:1;color:#fff}
-.n__sub{color:var(--ink-2);font-size:14px;margin-top:8px}
+        /* ============================================================
+           4. ABOUT
+           ============================================================
+           2 колонки текста. Без фоновых карточек — текст и так читается
+           на полупрозрачном бэкграунде.
+        */
+        section {
+            padding: 96px 0;
+            position: relative;
+            background: transparent
+        }
+
+        .section__head {
+            margin-bottom: 64px;
+            max-width: 840px
+        }
+
+        .section__head .label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--mono), sans-serif;
+            font-size: 12px;
+            color: var(--logo-violet);
+            letter-spacing: .04em;
+            margin-bottom: 20px;
+        }
+
+        .section__head .label::before {
+            content: "";
+            width: 32px;
+            height: 1px;
+            background: var(--logo-violet)
+        }
+
+        .section__head h2 {
+            font-size: clamp(36px, 5vw, 64px);
+            line-height: 1.05;
+            letter-spacing: -.03em;
+            margin: 0 0 16px;
+            font-weight: 700;
+            color: #fff
+        }
+
+        .section__head p {
+            color: var(--ink-2);
+            font-size: 17px;
+            margin: 0;
+            max-width: 640px
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 48px
+        }
+
+        .about-grid__text p {
+            font-size: 16px;
+            color: var(--ink-2);
+            margin: 0 0 16px
+        }
+
+        .about-grid__text p:first-child {
+            font-size: 18px;
+            color: #fff;
+            font-weight: 500
+        }
 
 
-/* ============================================================
-   7. CONTACTS
-   ============================================================
-   2 карточки, разделитель — вертикальная линия.
-*/
-.contacts{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.c-card{
-  padding:32px 28px;
-  background:var(--card);
-  border-right:1px solid var(--line);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-}
-.c-card:last-child{border-right:0}
-.c-card h4{
-  margin:0 0 12px;font-family:var(--mono),sans-serif;font-size:11px;color:var(--ink-3);
-  letter-spacing:.06em;text-transform:uppercase;
-}
-.c-card .v{font-size:18px;font-weight:500;color:#fff}
-.c-card .v a:hover{color:var(--accent)}
+        /* ============================================================
+           5. DIRECTIONS
+           ============================================================
+           4 столпа, каждый — полупрозрачная карточка с blur.
+        */
+        .pillars {
+            display: grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .pillar {
+            padding: 32px 24px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .pillar__num {
+            font-family: var(--mono), sans-serif;
+            font-size: 12px;
+            color: var(--logo-violet);
+            margin-bottom: 24px;
+            letter-spacing: .04em;
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--violet-soft);
+            border-radius: 4px;
+        }
+
+        .pillar h3 {
+            font-size: 20px;
+            margin: 0 0 12px;
+            font-weight: 600;
+            letter-spacing: -.01em;
+            color: #fff
+        }
+
+        .pillar p {
+            color: var(--ink-2);
+            font-size: 14px;
+            line-height: 1.55;
+            margin: 0
+        }
 
 
-/* ============================================================
-   8. FOOTER
-   ============================================================
-   Тёмный, контрастный, поверх бэкграунда.
-*/
-.footer{
-  padding:40px 0;background:rgba(6,17,46,.85);font-size:14px;color:var(--ink-2);
-  border-top:1px solid var(--line);
-  position:relative;z-index:2;
-}
-.footer__row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
-.footer b{color:#fff}
-.footer__legal{color:var(--ink-3)}
+        /* ============================================================
+           6. NUMBERS
+           ============================================================
+           4 крупных числа, каждое в полупрозрачной карточке.
+        */
+        .numbers {
+            display: grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .n {
+            padding: 32px 24px;
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .n__label {
+            font-family: var(--mono), sans-serif;
+            font-size: 11px;
+            color: var(--ink-3);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: 16px
+        }
+
+        .n__val {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -.04em;
+            line-height: 1;
+            color: #fff
+        }
+
+        .n__sub {
+            color: var(--ink-2);
+            font-size: 14px;
+            margin-top: 8px
+        }
 
 
-/* ============================================================
-   9. АДАПТИВ
-   ============================================================
-   Сначала планшет (≤960), потом телефон (≤640).
-*/
-@media (max-width: 960px){
-  .nav{display:none}
-  .hero__inner{grid-template-columns:1fr;gap:48px;padding:64px 0 80px}
-  .hero__right{border-left:0;border-top:1px solid var(--line);padding-left:0;padding-top:32px}
-  .about-grid{grid-template-columns:1fr;gap:24px}
-  .pillars{grid-template-columns:1fr}
-  .numbers{grid-template-columns:repeat(2,1fr)}
-  .contacts{grid-template-columns:1fr}
-  .c-card{border-right:0;border-bottom:1px solid var(--line)}
-  .c-card:last-child{border-bottom:0}
-}
-@media (max-width: 640px){
-  .container{padding:0 20px}
-  .numbers{grid-template-columns:1fr}
-  .n__val{font-size:48px}
-  section{padding:64px 0}
-}
+        /* ============================================================
+           7. CONTACTS
+           ============================================================
+           2 карточки, разделитель — вертикальная линия.
+        */
+        .contacts {
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            overflow: hidden
+        }
+
+        .c-card {
+            padding: 32px 28px;
+            background: var(--card);
+            border-right: 1px solid var(--line);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .c-card:last-child {
+            border-right: 0
+        }
+
+        .c-card h4 {
+            margin: 0 0 12px;
+            font-family: var(--mono), sans-serif;
+            font-size: 11px;
+            color: var(--ink-3);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .c-card .v {
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff
+        }
+
+        .c-card .v a:hover {
+            color: var(--accent)
+        }
 
 
-/* ============================================================
-   10. ПАРАЛЛАКС-БЭКГРАУНД
-   ============================================================
-   <div class="bg-stage"> фиксирован на весь viewport, в нём одна
-   картинка maket3-1_files/bg.jpg (1280x720, тёмная волна).
-   JS инвертирует направление: при скролле ВНИЗ картинка уезжает ВВЕРХ.
-   Коэффициент -0.28 — как передняя волна в index.html.
-*/
-.bg-stage{
-  position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
-  background:var(--bg);
-}
-.bg-stage__img{
-  position:absolute;
-  left:50%;top:50%;
-  width:100vw;height:380vh;
-  min-width:1280px;min-height:720px;
-  object-fit:cover;
-  transform:translate(-50%,-50%);
-  will-change:transform;
-  /* слегка приглушить картинку, чтобы контент читался лучше */
-  filter:brightness(.80) saturate(1.1);
-}
-@media (prefers-reduced-motion: reduce){
-  .bg-stage__img{ transition:none !important; }
-}
-.hero__title {
-  display: flex;
-  align-items: center;
-  gap: 0.3em;
-}
+        /* ============================================================
+           8. FOOTER
+           ============================================================
+           Тёмный, контрастный, поверх бэкграунда.
+        */
+        .footer {
+            padding: 40px 0;
+            background: rgba(6, 17, 46, .85);
+            font-size: 14px;
+            color: var(--ink-2);
+            border-top: 1px solid var(--line);
+            position: relative;
+            z-index: 2;
+        }
 
-.hero__title-words {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.4em;
-  line-height: 1.15;
-}
-</style>
+        .footer__row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center
+        }
+
+        .footer b {
+            color: #fff
+        }
+
+        .footer__legal {
+            color: var(--ink-3)
+        }
+
+
+        /* ============================================================
+           9. АДАПТИВ
+           ============================================================
+           Сначала планшет (≤960), потом телефон (≤640).
+        */
+        @media (max-width: 960px) {
+            .nav {
+                display: none
+            }
+
+            .hero__inner {
+                grid-template-columns:1fr;
+                gap: 48px;
+                padding: 64px 0 80px
+            }
+
+            .hero__right {
+                border-left: 0;
+                border-top: 1px solid var(--line);
+                padding-left: 0;
+                padding-top: 32px
+            }
+
+            .about-grid {
+                grid-template-columns:1fr;
+                gap: 24px
+            }
+
+            .pillars {
+                grid-template-columns:1fr
+            }
+
+            .numbers {
+                grid-template-columns:repeat(2, 1fr)
+            }
+
+            .contacts {
+                grid-template-columns:1fr
+            }
+
+            .c-card {
+                border-right: 0;
+                border-bottom: 1px solid var(--line)
+            }
+
+            .c-card:last-child {
+                border-bottom: 0
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 20px
+            }
+
+            .numbers {
+                grid-template-columns:1fr
+            }
+
+            .n__val {
+                font-size: 48px
+            }
+
+            section {
+                padding: 64px 0
+            }
+        }
+
+
+        /* ============================================================
+           10. ПАРАЛЛАКС-БЭКГРАУНД
+           ============================================================
+           <div class="bg-stage"> фиксирован на весь viewport, в нём одна
+           картинка maket3-1_files/bg.jpg (1280x720, тёмная волна).
+           JS инвертирует направление: при скролле ВНИЗ картинка уезжает ВВЕРХ.
+           Коэффициент -0.28 — как передняя волна в index.html.
+        */
+        .bg-stage {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            background: var(--bg);
+        }
+
+        .bg-stage__img {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100vw;
+            height: 380vh;
+            min-width: 1280px;
+            min-height: 720px;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            will-change: transform;
+            /* слегка приглушить картинку, чтобы контент читался лучше */
+            filter: brightness(.80) saturate(1.1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bg-stage__img {
+                transition: none !important;
+            }
+        }
+
+        .hero__title {
+            display: flex;
+            align-items: center;
+            gap: 0.3em;
+        }
+
+        .hero__title-words {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.4em;
+            line-height: 1.15;
+        }
+    </style>
 </head>
 <body>
 
 <!-- ============== HEADER ============== -->
 <header class="header">
-  <div class="container header__row">
-    <a href="#" class="brand" aria-label="ПСБ Инновации и инвестиции">
-      <img class="brand__mark" src="./index_files/signature_dark.png" alt="ПСБ Инновации и инвестиции">
-    </a>
-    <nav class="nav">
-      <a href="#about">О компании</a>
-      <a href="#directions">Экспертиза</a>
-      <a href="#numbers">Результаты</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-  </div>
+    <div class="container header__row">
+        <a href="#" class="brand" aria-label="ПСБ Инновации и инвестиции">
+            <img class="brand__mark" src="./index_files/signature_dark.png" alt="ПСБ Инновации и инвестиции">
+        </a>
+        <nav class="nav">
+            <a href="#about">О компании</a>
+            <a href="#directions">Экспертиза</a>
+            <a href="#numbers">Результаты</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </div>
 </header>
 
 <!-- ============== HERO ============== -->
 <section class="hero">
-  <div class="container">
-    <div class="hero__inner">
-      <div class="hero__left">
-        
-        <div class="meta mono">10+&nbsp;лет разарботки методологий · Готовые решения для развития инициатив</div>
-        <h1 class="hero__title">
-  <span class="accent hero__title-psb">ПСБ</span>
-  <span class="hero__title-words">
-    <span class="accent">Инновации</span>
-    <span>и инвестиции</span>
-  </span>
-</h1>
-        <p class="lead">
-          Наша компания входит в&nbsp;финансовую группу компаний<br>
-          ПАО «Банк ПСБ». Мы сопровождаем бизнес-процессы крупнейших отечественных
-          компаний, оптимизируя поддерживающие функции и&nbsp;сокращая сервисные издержки.
-        </p>
-        <div class="hero__cta">
-          <!-- CTA-кнопки не выводятся в этой версии макета -->
-        </div>
-      </div>
-      <aside class="hero__right">
-        <div class="stat-row">
-          <div class="label">// профиль</div>
-          <div class="val">10+</div>
-          <div class="sub">лет профильного опыта в управлении и инвестициях</div>
-        </div>
-        <div class="stat-row">
-          <div class="label">// экспертиза</div>
-          <div class="val">4</div>
-          <div class="sub">IT-консалтинг · центр компетенций · общие центры обслуживания · сюрвейинг · разработка стратегий развития, цифровизации<br> и импортозамещения</div>
-        </div>
-        <div class="stat-row">
-          <div class="label">// команда</div>
-          <div class="val">70+</div>
-          <div class="sub">профессионалов с международным опытом</div>
-        </div>
+    <div class="container">
+        <div class="hero__inner">
+            <div class="hero__left">
 
-      </aside>
+                <div class="meta mono">10+&nbsp;лет разработки методологий · Готовые решения для развития инициатив
+                </div>
+                <h1 class="hero__title">
+                    <span class="accent hero__title-psb">ПСБ</span>
+                    <span class="hero__title-words">
+                        <span class="accent">Инновации</span>
+                        <span>и инвестиции</span>
+                    </span>
+                </h1>
+                <p class="lead">
+                    Наша компания входит в&nbsp;финансовую группу компаний<br>
+                    ПАО «Банк ПСБ». Мы сопровождаем бизнес-процессы крупнейших отечественных
+                    компаний, оптимизируя поддерживающие функции и&nbsp;сокращая сервисные издержки.
+                </p>
+                <div class="hero__cta">
+                    <!-- CTA-кнопки не выводятся в этой версии макета -->
+                </div>
+            </div>
+            <aside class="hero__right">
+                <div class="stat-row">
+                    <div class="label">// профиль</div>
+                    <div class="val">10+</div>
+                    <div class="sub">лет профильного опыта в управлении и инвестициях</div>
+                </div>
+                <div class="stat-row">
+                    <div class="label">// экспертиза</div>
+                    <div class="val">4</div>
+                    <div class="sub">IT-консалтинг · центр компетенций · общие центры обслуживания · сюрвейинг ·
+                        разработка стратегий развития, цифровизации<br> и импортозамещения
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="label">// команда</div>
+                    <div class="val">70+</div>
+                    <div class="sub">профессионалов с международным опытом</div>
+                </div>
+
+            </aside>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- ============== ABOUT ============== -->
 <section id="about">
-  <div class="container">
-    <div class="section__head">
-      <div class="label">// 01 · О&nbsp;компании</div>
-      <h2>Десять лет в&nbsp;управлении <br>и инвестициях</h2>
+    <div class="container">
+        <div class="section__head">
+            <div class="label">// 01 · О&nbsp;компании</div>
+            <h2>Десять лет в&nbsp;управлении <br>и инвестициях</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-grid__text">
+                <p>
+                    Компания была создана более 10&nbsp;лет назад <br>как информационно-технологический
+                    локомотив <br>ПАО «Банк ПСБ», а&nbsp;затем трансформировалась в&nbsp;управляющую компанию для
+                    сопровождения непрофильных банковских бизнесов.
+                </p>
+                <p>
+                    В качестве управляющей структуры экосистемы банка ПСБ мы накопили компетенции по реализации
+                    различных инициатив:
+                    от консалтинга <br>до инвестиционных проектов общим объемом в 20 млрд рублей.
+                </p>
+            </div>
+            <div class="about-grid__text">
+                <p>
+                    Мы&nbsp;обеспечиваем рост производительности труда, оптимизируя и централизуя функции бухгалтерского
+                    <br>и налогового учета, казначейства, бюджетирования<br> и информационных технологий для более чем
+                    25 клиентов<br> из разных отраслей.
+                </p>
+                <p>
+                    Проектная команда создала и запустила более 10 ОЦО, обеспечивая доступ к опыту лучших специалистов
+                    рынка и применяя его для решения задач.
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="about-grid">
-      <div class="about-grid__text">
-        <p>
-          Компания была создана более 10&nbsp;лет назад <br>как информационно-технологический
-          локомотив <br>ПАО «Банк ПСБ», а&nbsp;затем трансформировалась в&nbsp;управляющую компанию для сопровождения непрофильных банковских бизнесов.
-        </p>
-        <p>
-          В качестве управляющей структуры экосистемы банка ПСБ мы накопили компетенции по реализации различных инициатив:
-          от консалтинга <br>до инвестиционных проектов общим объемом в 20 млрд рублей.
-        </p>
-      </div>
-      <div class="about-grid__text">
-        <p>
-          Мы&nbsp;обеспечиваем рост производительности труда,  оптимизируя и централизуя функции бухглатерского <br>и налогового учета, казначейства, бюджетирования<br> и информационных технологий для более чем 25 клиентов<br> из разных отраслей.
-        </p>
-        <p>
-          Проектная команда создала и запустила более 10 ОЦО, обеспечивая доступ к опыту лучших специалистов рынка и применяя его для решения задач.
-        </p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ============== DIRECTIONS ============== -->
 <section id="directions">
-  <div class="container">
-    <div class="section__head">
-      <div class="label">// 02 · Экспертиза</div>
-      <h2>Единый центр компетенций <br>с комплексным набором сервисов</h2>
+    <div class="container">
+        <div class="section__head">
+            <div class="label">// 02 · Экспертиза</div>
+            <h2>Единый центр компетенций <br>с комплексным набором сервисов</h2>
+        </div>
+        <div class="pillars">
+            <div class="pillar">
+                <div class="pillar__num">/01</div>
+                <h3>IT-консалтинг</h3>
+                <p>Мы специализируемся на оптимизации<br> и цифровизации бизнес-процессов компаний, разработке стратегий
+                    цифровизации<br> и сопровождении программного обеспечения</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar__num">/02</div>
+                <h3>Центр компетенций</h3>
+                <p>Имеем глубокую экспертизу в выстраивании процессов ОЦО. Проекты включают в себя консультирование в
+                    области создания, развития и эффективности ОЦО</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar__num">/03</div>
+                <h3>Сюрвейинг</h3>
+                <p>Обеспечиваем независимую экспертизу, финансово-технический анализ, мониторинг <br>и консультационное
+                    сопровождение строительных объектов</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar__num">/04</div>
+                <h3>Разработка стратегий развития, цифровизации<br> и импортозамещения</h3>
+                <p>Проводим комплексный анализ <br>и разрабатываем видение перспективного развития бизнеса, региона,
+                    города</p>
+            </div>
+        </div>
     </div>
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar__num">/01</div>
-        <h3>IT-консалтинг</h3>
-        <p>Мы специализируемся на оптимизации<br> и цифровизации бизнес-процессов компаний, разработке стратегий цифровизации<br> и сопровождении программного обеспечения</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar__num">/02</div>
-        <h3>Центр компетенций</h3>
-        <p>Имеем глубокую экспертизу в выстраивании процессов ОЦО. Проекты включают в себя консультирование в области создания, развития и эффективности ОЦО</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar__num">/03</div>
-        <h3>Сюрвейинг</h3>
-        <p>Обеспечиваем независимую экспертизу, финансово-технический анализ, мониторинг <br>и консультационное сопровождение строительных объектов</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar__num">/04</div>
-        <h3>Разработка стратегий развития, цифровизации<br> и импортозамещения</h3>
-        <p>Проводим комплексный анализ <br>и разрабатываем видение перспективного развития бизнеса, региона, города</p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ============== NUMBERS ============== -->
 <section id="numbers">
-  <div class="container">
-    <div class="section__head">
-      <div class="label">// 03 · Результаты</div>
-      <h2>Цифры и&nbsp;факты</h2>
+    <div class="container">
+        <div class="section__head">
+            <div class="label">// 03 · Результаты</div>
+            <h2>Цифры и&nbsp;факты</h2>
+        </div>
+        <div class="numbers">
+            <div class="n">
+                <div class="n__label">// Консалтинг</div>
+                <div class="n__val">200+</div>
+                <div class="n__sub">млрд рублей инвестиционных проектов</div>
+            </div>
+            <div class="n">
+                <div class="n__label">// венчур</div>
+                <div class="n__val">3</div>
+                <div class="n__sub">млрд рублей инвестиций</div>
+            </div>
+            <div class="n">
+                <div class="n__label">// сюрвейинг</div>
+                <div class="n__val">1,5</div>
+                <div class="n__sub">трлн рублей проинспектированных проектов</div>
+            </div>
+            <div class="n">
+                <div class="n__label">// ОЦО</div>
+                <div class="n__val">120</div>
+                <div class="n__sub">клиентов из рейтинга крупнейших компаний RAEX-600</div>
+            </div>
+        </div>
     </div>
-    <div class="numbers">
-      <div class="n">
-        <div class="n__label">// Консалтинг</div>
-        <div class="n__val">200+</div>
-        <div class="n__sub">млрд рублей инвестиционных проектов</div>
-      </div>
-      <div class="n">
-        <div class="n__label">// венчур</div>
-        <div class="n__val">3</div>
-        <div class="n__sub">млрд рублей инвестиций</div>
-      </div>
-      <div class="n">
-        <div class="n__label">// сюрвейинг</div>
-        <div class="n__val">1,5</div>
-        <div class="n__sub">трлн рублей проинспектированных проектов</div>
-      </div>
-      <div class="n">
-        <div class="n__label">// ОЦО</div>
-        <div class="n__val">120</div>
-        <div class="n__sub">клиентов из рейтинга крупнейших компаний RAEX-600</div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ============== VACATIONS ============== -->
 <section id="HR">
-  <div class="container">
-    <div class="section__head">
-      <div class="label">// 04 · Вакансии</div>
-      <h2>Наши вакансии</h2>
+    <div class="container">
+        <div class="section__head">
+            <div class="label">// 04 · Вакансии</div>
+            <h2>Наши вакансии</h2>
+        </div>
+        <div id="vacantion">
+            <script type="module" class="widgetHhScript">import initVacanciesWidget
+                from 'https://widgets.hh.ru/vacanciesWidget/vacanciesWidget.js';
+
+            initVacanciesWidget({
+                "country": "RU",
+                "searchParams": {"employerId": ["6110801"], "host": "hh.ru", "locale": "RU", "perPage": 4},
+                "settings": {
+                    "locale": "RU",
+                    "theme": "DARK",
+                    "size": {"width": 392, "height": 480},
+                    "elementsOrder": "NAME_SALARY_AREA_EMPLOYER",
+                    "isLogoVisible": true,
+                    "isRegionVisible": true,
+                    "isRegionSearchEnabled": false,
+                    "isProfRolesSearchEnabled": false,
+                    "isSalaryVisible": true
+                },
+                "version": "1"
+            });</script>
+        </div>
     </div>
-    <div id="vacantion">
-     <script type="module" class="widgetHhScript">import initVacanciesWidget from 'https://widgets.hh.ru/vacanciesWidget/vacanciesWidget.js';initVacanciesWidget({"country":"RU","searchParams":{"employerId":["6110801"],"host":"hh.ru","locale":"RU","perPage":4},"settings":{"locale":"RU","theme":"DARK","size":{"width":392,"height":480},"elementsOrder":"NAME_SALARY_AREA_EMPLOYER","isLogoVisible":true,"isRegionVisible":true,"isRegionSearchEnabled":false,"isProfRolesSearchEnabled":false,"isSalaryVisible":true},"version":"1"});</script>       </div>
-  </div>
 </section>
 <!-- ============== CONTACTS ============== -->
 <section id="contacts">
-  <div class="container">
-    <div class="section__head">
-      <div class="label">// 05 · Контакты</div>
-      <h2>Связаться с&nbsp;нами</h2>
+    <div class="container">
+        <div class="section__head">
+            <div class="label">// 05 · Контакты</div>
+            <h2>Связаться с&nbsp;нами</h2>
+        </div>
+        <div class="contacts">
+            <div class="c-card">
+                <h4>// адрес</h4>
+                <div class="v">109240, Москва,<br>ул.&nbsp;Большой Ватин переулок, 3</div>
+            </div>
+            <div class="c-card">
+                <h4>// email</h4>
+                <div class="v"><a href="mailto:info@psbii.ru">info@psbii.ru</a></div>
+            </div>
+        </div>
     </div>
-    <div class="contacts">
-      <div class="c-card">
-        <h4>// адрес</h4>
-        <div class="v">109240, Москва,<br>ул.&nbsp;Большой Ватин переулок, 3</div>
-      </div>
-      <div class="c-card">
-        <h4>// email</h4>
-        <div class="v"><a href="mailto:info@psbii.ru">info@psbii.ru</a></div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ============== FOOTER ============== -->
 
 <footer class="footer">
-  <div class="container footer__row">
-    <div><b>ООО «ПСБ Инновации и&nbsp;инвестиции»</b> · ИНН&nbsp;7731290146 · ОГРН&nbsp;1157746762381</div>
-    <div class="mono footer__legal">© 2026</div>
-  </div>
+    <div class="container footer__row">
+        <div><b>ООО «ПСБ Инновации и&nbsp;инвестиции»</b> · ИНН&nbsp;7731290146 · ОГРН&nbsp;1157746762381</div>
+        <div class="mono footer__legal">© 2026</div>
+    </div>
 </footer>
 
 <!-- ============== ПАРАЛЛАКС-БЭКГРАУНД (фиксированный, за контентом) ============== -->
 <div class="bg-stage" aria-hidden="true">
-  <img class="bg-stage__img" src="./index_files/bg.jpg" alt="" style="transform: translate(-50%, calc(-50% - 0.1px));">
+    <img class="bg-stage__img" src="./index_files/bg.jpg" alt=""
+         style="transform: translate(-50%, -50%);">
 </div>
 
 <!-- ============== СКРИПТЫ ==============
@@ -523,46 +892,52 @@ section{padding:96px 0;position:relative;background:transparent}
      2) параллакс-бэкграунд (инвертированный: картинка уезжает вверх)
 -->
 <script>
-  // 1) плавная прокрутка по якорям
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click',e=>{
-      const id=a.getAttribute('href').slice(1);
-      const el=document.getElementById(id);
-      if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+    // 1) плавная прокрутка по якорям
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const id = a.getAttribute('href').slice(1);
+            const el = document.getElementById(id);
+            if (el) {
+                e.preventDefault();
+                el.scrollIntoView({behavior: 'smooth', block: 'start'});
+            }
+        });
     });
-  });
 
-  // 2) параллакс-бэкграунд
-  (function(){
-    const img = document.querySelector('.bg-stage__img');
-    if(!img) return;
+    // 2) параллакс-бэкграунд
+    (function () {
+        const img = document.querySelector('.bg-stage__img');
+        if (!img) return;
 
-    let ticking = false, y = 0, targetY = 0;
+        let ticking = false, y = 0, targetY = 0;
 
-    function onScroll(){
-      targetY = window.scrollY || window.pageYOffset;
-      if(!ticking){
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    }
-    function update(){
-      // лёгкая инерция (lerp)
-      y += (targetY - y) * 0.08;
-      // При прокрутке вниз бэкграунд уезжает вверх —
-      // фон отстаёт от контента, как в index.html (передняя волна -0.28).
-      const shift = -y * 0.28;
-      img.style.transform = 'translate(-50%, calc(-50% + ' + shift.toFixed(1) + 'px))';
-      ticking = false;
-      if(Math.abs(targetY - y) > 0.5){
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    }
-    window.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-  })();
+        function onScroll() {
+            targetY = window.scrollY || window.pageYOffset;
+            if (!ticking) {
+                window.requestAnimationFrame(update);
+                ticking = true;
+            }
+        }
+
+        function update() {
+            // лёгкая инерция (lerp)
+            y += (targetY - y) * 0.08;
+            // При прокрутке вниз бэкграунд уезжает вверх —
+            // фон отстаёт от контента, как в index.html (передняя волна -0.28).
+            const shift = -y * 0.28;
+            img.style.transform = 'translate(-50%, calc(-50% + ' + shift.toFixed(1) + 'px))';
+            ticking = false;
+            if (Math.abs(targetY - y) > 0.5) {
+                window.requestAnimationFrame(update);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', onScroll, {passive: true});
+        onScroll();
+    })();
 </script>
 
 
-</body></html>
+</body>
+</html>
