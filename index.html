@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Макет 3-1 — «Инженерный» на тёмном фоне (параллакс-картинка)</title>
+    <title>ПСБ Инновации и инвестиции — делегируйте, чтобы проявляться</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -146,15 +146,21 @@
         }
 
 
+
         /* ============================================================
-           3. HERO
-           ============================================================
-           Тонкий grid-фон, 2 колонки. Подпись крупно, поверх бэкграунда.
-        */
+           HERO — делегирование / личное время
+           ============================================================ */
         .hero {
             position: relative;
             overflow: hidden;
-            background: transparent; /* сквозь hero просвечивает .bg-stage */
+            min-height: min(760px, calc(100vh - 64px));
+            display: flex;
+            align-items: stretch;
+            background:
+                    radial-gradient(60% 90% at 78% 48%, rgba(255, 90, 31, .14), transparent 58%),
+                    radial-gradient(45% 75% at 92% 10%, rgba(123, 63, 242, .10), transparent 62%),
+                    transparent;
+            padding-top: 5svh;
         }
 
         .hero::before {
@@ -162,30 +168,30 @@
             position: absolute;
             inset: 0;
             pointer-events: none;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, .04) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, .04) 1px, transparent 1px);
+            background-image:
+                    linear-gradient(to right, rgba(255,255,255,.035) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,.035) 1px, transparent 1px);
             background-size: 64px 64px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.65) 54%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.65) 54%, transparent 100%);
             z-index: 1;
         }
 
         .hero__inner {
             position: relative;
             z-index: 2;
-            padding: 96px 0 120px;
+            width: 100%;
+            padding: 0 0 72px;
             display: grid;
-            grid-template-columns:1.4fr 1fr;
-            gap: 64px;
-            align-items: end
+            grid-template-columns: minmax(0, 1.04fr) minmax(420px, .96fr);
+            gap: 32px;
+            align-items: center;
         }
 
-        .hero__left .signature {
-            display: block;
-            height: 88px;
-            width: auto;
-            margin-bottom: 32px;
-            filter: drop-shadow(0 8px 24px rgba(0, 0, 0, .5));
+        .hero__left {
+            position: relative;
+            z-index: 3;
+            padding-bottom: 8px;
         }
 
         .hero__left .meta {
@@ -193,105 +199,321 @@
             align-items: center;
             gap: 12px;
             font-family: var(--mono), sans-serif;
-            font-size: 12px;
-            letter-spacing: .04em;
-            color: var(--ink-3);
-            margin-bottom: 32px;
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.58);
+            margin-bottom: 24px;
         }
 
         .hero__left .meta::before {
             content: "";
-            width: 32px;
+            width: 36px;
             height: 1px;
-            background: var(--logo-violet)
+            background: var(--accent);
+            box-shadow: 0 0 16px rgba(255,90,31,.45);
         }
 
         .hero h1 {
-            font-size: clamp(48px, 7vw, 96px);
-            line-height: 1.0;
-            letter-spacing: -.04em;
-            margin: 0 0 32px;
+            max-width: 790px;
+            font-size: clamp(32px, 5vw, 64px);
+            line-height: 1;
+            letter-spacing: -.055em;
+            margin: 0 0 28px;
             font-weight: 700;
             color: #fff;
+            text-wrap: balance;
         }
 
         .hero h1 .accent {
-            color: var(--accent)
+            color: var(--accent);
+            text-shadow: 0 0 34px rgba(255, 90, 31, .13);
         }
 
         .hero p.lead {
-            font-size: 18px;
-            line-height: 1.55;
-            color: var(--ink-2);
-            max-width: 600px;
-            margin: 0 0 40px
+            max-width: 610px;
+            font-size: 17px;
+            line-height: 1.65;
+            color: rgba(255,255,255,.70);
+            margin: 0 0 34px;
         }
 
         .hero__cta {
             display: flex;
-            gap: 12px;
-            flex-wrap: wrap
-        }
-
-        .btn-outline {
-            display: inline-flex;
+            gap: 10px;
+            flex-wrap: wrap;
             align-items: center;
-            height: 42px;
-            padding: 0 18px;
-            border: 1px solid rgba(255, 255, 255, .25);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: border-color .15s, color .15s, background .15s;
         }
 
-        .btn-outline:hover {
-            border-color: #fff;
-            color: #fff;
-            background: rgba(255, 255, 255, .06)
+        .hero__cta_mobile{
+            display: none;
+        }
+
+        .hero__cta .btn,
+        .hero__cta .btn-outline {
+            height: 46px;
+            padding: 0 20px;
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
         }
 
         .hero__right {
-            border-left: 1px solid var(--line);
-            padding-left: 32px;
+            position: relative;
+            min-height: 590px;
+            border: 0;
+            padding: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
 
-        .hero__right .stat-row {
-            padding: 24px 0;
-            border-bottom: 1px solid var(--line);
+        .hero__visual {
+            position: relative;
+            width: min(600px, 100%);
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
 
-        .hero__right .stat-row:first-child {
-            padding-top: 0
+        .hero__visual::before {
+            content: "";
+            position: absolute;
+            width: 510px;
+            height: 510px;
+            right: 2%;
+            bottom: 6%;
+            border-radius: 50%;
+            background:
+                    radial-gradient(circle, rgba(255,90,31,.19) 0%, rgba(255,90,31,.07) 31%, transparent 69%);
+            filter: blur(7px);
+            pointer-events: none;
         }
 
-        .hero__right .stat-row:last-child {
-            border-bottom: 0
+        .hero__person {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: min(610px, 100%);
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            object-position: bottom center;
+            filter: drop-shadow(0 22px 44px rgba(0,0,0,.34));
+            transform: translateX(2%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
         }
 
-        .hero__right .stat-row .label {
+        .hero__side-note {
+            position: absolute;
+            right: -2px;
+            top: 15%;
+            z-index: 4;
+            width: 190px;
+            padding: 14px 16px;
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 10px;
+            background: rgba(10,23,64,.46);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 16px 48px rgba(0,0,0,.22);
+        }
+
+        .hero__side-note .label {
             font-family: var(--mono), sans-serif;
-            font-size: 11px;
-            color: var(--ink-3);
-            letter-spacing: .06em;
+            font-size: 10px;
+            letter-spacing: .08em;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            color: rgba(255,255,255,.46);
+            margin-bottom: 7px;
         }
 
-        .hero__right .stat-row .val {
-            font-size: 32px;
+        .hero__side-note .value {
+            font-size: 17px;
+            line-height: 1.25;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .hero__stats {
+            position: absolute;
+            left: 2%;
+            bottom: 7%;
+            z-index: 4;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(120px, 1fr));
+            width: min(360px, 72%);
+            gap: 10px;
+        }
+
+        .hero__stat {
+            padding: 15px 16px;
+            background: rgba(10,23,64,.54);
+            border: 1px solid rgba(255,255,255,.13);
+            border-radius: 10px;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 16px 48px rgba(0,0,0,.20);
+        }
+
+        .hero__stat .label {
+            font-family: var(--mono), sans-serif;
+            font-size: 10px;
+            letter-spacing: .08em;
+            color: rgba(255,255,255,.43);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .hero__stat .val {
+            font-size: 30px;
+            line-height: 1;
             font-weight: 700;
-            letter-spacing: -.02em;
-            color: #fff
+            letter-spacing: -.035em;
+            color: #fff;
         }
 
-        .hero__right .stat-row .sub {
-            color: var(--ink-2);
-            font-size: 13px;
-            margin-top: 4px
+        .hero__stat .sub {
+            margin-top: 5px;
+            color: rgba(255,255,255,.60);
+            font-size: 11px;
+            line-height: 1.4;
         }
 
+
+        .hh-widget-container {
+            width: 100%;
+            max-width: 640px;
+            overflow: hidden;
+        }
+
+        .hh-widget-container iframe,
+        .hh-widget-container > div {
+            max-width: 100% !important;
+            box-sizing: border-box;
+        }
+
+        /* Перебиваем фиксированную ширину виджета HH */
+        .cc2_zCUwpl {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        @media (max-width: 1200px) {
+            .hero__side-note {
+                right: 2%;
+                top: 40%;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .hero {
+                min-height: auto;
+                padding-top: 32px;
+            }
+
+            .hero__cta {
+                display: none;
+            }
+
+            .hero__cta_mobile{
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero__inner {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 56px 0 72px;
+            }
+
+            .hero__right {
+                min-height: 520px;
+                margin-top: -12px;
+            }
+
+            .hero__side-note {
+                right: 2%;
+                top: 8%;
+            }
+
+            .hero__stats {
+                left: 2%;
+                bottom: 4%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero__inner {
+                padding: 44px 0 56px;
+            }
+
+            .hero h1 {
+                /*font-size: clamp(44px, 13vw, 66px);*/
+                line-height: 1.1;
+            }
+
+            .hero p.lead {
+                font-size: 15px;
+            }
+
+            .hero__right {
+                min-height: 430px;
+            }
+
+            .hero__visual {
+                width: 112%;
+                margin-left: -6%;
+            }
+
+            .hero__person {
+                width: 100%;
+                transform: translateX(4%);
+            }
+
+            .hero__side-note {
+                top: 4%;
+                right: 2%;
+                width: 158px;
+                padding: 12px 13px;
+            }
+
+            .hero__side-note .value {
+                font-size: 14px;
+            }
+
+            .hero__stats {
+                width: 82%;
+                left: 4%;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero__stat {
+                padding: 12px;
+            }
+
+            .hero__stat .val {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero__side-note {
+                right: 0;
+                top: 40%;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .hero__side-note {
+                right: -5%;
+                top: -20%;
+            }
+        }
 
         /* ============================================================
            4. ABOUT
@@ -546,7 +768,7 @@
             .hero__inner {
                 grid-template-columns:1fr;
                 gap: 48px;
-                padding: 64px 0 80px
+                padding: 0 0 80px
             }
 
             .hero__right {
@@ -581,6 +803,10 @@
             .c-card:last-child {
                 border-bottom: 0
             }
+
+            section {
+                padding: 32px 0
+            }
         }
 
         @media (max-width: 640px) {
@@ -597,7 +823,7 @@
             }
 
             section {
-                padding: 64px 0
+                padding: 32px 0
             }
         }
 
@@ -639,19 +865,6 @@
                 transition: none !important;
             }
         }
-
-        .hero__title {
-            display: flex;
-            align-items: center;
-            gap: 0.3em;
-        }
-
-        .hero__title-words {
-            display: flex;
-            flex-direction: column;
-            font-size: 0.4em;
-            line-height: 1.15;
-        }
     </style>
 </head>
 <body>
@@ -676,55 +889,67 @@
     <div class="container">
         <div class="hero__inner">
             <div class="hero__left">
+                <div class="meta mono">ПСБ Инновации и инвестиции · управление и развитие</div>
 
-                <div class="meta mono">10+&nbsp;лет разработки методологий · Готовые решения для развития инициатив
-                </div>
-                <h1 class="hero__title">
-                    <span class="accent hero__title-psb">ПСБ</span>
-                    <span class="hero__title-words">
-                        <span class="accent">Инновации</span>
-                        <span>и инвестиции</span>
-                    </span>
+                <h1>
+                    Вы готовы делегировать?<br>
+                    <span class="accent">Ваше время - проявляться</span>
                 </h1>
+
                 <p class="lead">
-                    Наша компания входит в&nbsp;финансовую группу компаний<br>
-                    ПАО «Банк ПСБ». Мы сопровождаем бизнес-процессы крупнейших отечественных
-                    компаний, оптимизируя поддерживающие функции и&nbsp;сокращая сервисные издержки.
+                    Снимаем с бизнеса поддерживающие функции, выстраиваем процессы и
+                    цифровые решения, чтобы руководители могли сосредоточиться на развитии,
+                    стратегии и результате.
                 </p>
+
                 <div class="hero__cta">
-                    <!-- CTA-кнопки не выводятся в этой версии макета -->
+                    <a href="#about" class="btn">О компании</a>
+                    <a href="#HR" class="btn-outline">Наши вакансии</a>
                 </div>
             </div>
-            <aside class="hero__right">
-                <div class="stat-row">
-                    <div class="label">// профиль</div>
-                    <div class="val">10+</div>
-                    <div class="sub">лет профильного опыта в управлении и инвестициях</div>
-                </div>
-                <div class="stat-row">
-                    <div class="label">// экспертиза</div>
-                    <div class="val">4</div>
-                    <div class="sub">IT-консалтинг · центр компетенций · общие центры обслуживания · сюрвейинг ·
-                        разработка стратегий развития, цифровизации<br> и импортозамещения
+
+            <aside class="hero__right" aria-label="Ключевые показатели">
+                <div class="hero__visual">
+                    <div class="hero__side-note">
+                        <div class="label">// фокус</div>
+                        <div class="value">Освободить время для главного</div>
+                    </div>
+
+                    <img
+                            class="hero__person"
+                            src="index_files/img.png"
+                            alt="Профессиональный портрет"
+                    >
+
+                    <div class="hero__stats">
+                        <div class="hero__stat">
+                            <div class="label">// опыт</div>
+                            <div class="val">10+</div>
+                            <div class="sub">лет в управлении и инвестициях</div>
+                        </div>
+
+                        <div class="hero__stat">
+                            <div class="label">// команда</div>
+                            <div class="val">70+</div>
+                            <div class="sub">профессионалов с международным опытом</div>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-row">
-                    <div class="label">// команда</div>
-                    <div class="val">70+</div>
-                    <div class="sub">профессионалов с международным опытом</div>
-                </div>
-
             </aside>
+
+            <div class="hero__cta hero__cta_mobile">
+                <a href="#about" class="btn">О компании</a>
+                <a href="#HR" class="btn-outline">Наши вакансии</a>
+            </div>
         </div>
     </div>
 </section>
-
 <!-- ============== ABOUT ============== -->
 <section id="about">
     <div class="container">
         <div class="section__head">
             <div class="label">// 01 · О&nbsp;компании</div>
-            <h2>Десять лет в&nbsp;управлении <br>и инвестициях</h2>
+            <h2>Десять лет в&nbsp;управлении и инвестициях</h2>
         </div>
         <div class="about-grid">
             <div class="about-grid__text">
@@ -782,7 +1007,7 @@
             </div>
             <div class="pillar">
                 <div class="pillar__num">/04</div>
-                <h3>Разработка стратегий развития, цифровизации<br> и импортозамещения</h3>
+                <h3>Разработка стратегий развития, цифровизации и импортозамещения</h3>
                 <p>Проводим комплексный анализ <br>и разрабатываем видение перспективного развития бизнеса, региона,
                     города</p>
             </div>
@@ -829,7 +1054,7 @@
             <div class="label">// 04 · Вакансии</div>
             <h2>Наши вакансии</h2>
         </div>
-        <div id="vacantion">
+        <div id="vacantion" class="hh-widget-container">
             <script type="module" class="widgetHhScript">import initVacanciesWidget
                 from 'https://widgets.hh.ru/vacanciesWidget/vacanciesWidget.js';
 
@@ -839,7 +1064,7 @@
                 "settings": {
                     "locale": "RU",
                     "theme": "DARK",
-                    "size": {"width": 392, "height": 480},
+                    "size": {"width": "100%", "height": 480},
                     "elementsOrder": "NAME_SALARY_AREA_EMPLOYER",
                     "isLogoVisible": true,
                     "isRegionVisible": true,
