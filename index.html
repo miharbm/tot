@@ -684,7 +684,7 @@
         */
         .contacts {
             display: grid;
-            grid-template-columns:1fr 1fr;
+            grid-template-columns: repeat(3, 1fr);;
             gap: 0;
             border: 1px solid var(--line);
             border-radius: 10px;
@@ -715,7 +715,8 @@
         .c-card .v {
             font-size: 18px;
             font-weight: 500;
-            color: #fff
+            color: #fff;
+            font-style: normal;
         }
 
         .c-card .v a:hover {
@@ -1084,14 +1085,34 @@
             <div class="label">// 05 · Контакты</div>
             <h2>Связаться с&nbsp;нами</h2>
         </div>
+
         <div class="contacts">
             <div class="c-card">
                 <h4>// адрес</h4>
-                <div class="v">109240, Москва,<br>ул.&nbsp;Большой Ватин переулок, 3</div>
+                <address class="v">
+                    <a
+                            href="https://yandex.ru/maps/?text=109240%2C%20Москва%2C%20ул.%20Большой%20Ватин%20переулок%2C%203"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                    >
+                        109240, Москва,<br>
+                        ул.&nbsp;Большой Ватин переулок, 3
+                    </a>
+                </address>
             </div>
+
+            <div class="c-card">
+                <h4>// телефон</h4>
+                <div class="v">
+                    <a href="tel:88002500302">8 (800) 250-03-02</a>
+                </div>
+            </div>
+
             <div class="c-card">
                 <h4>// email</h4>
-                <div class="v"><a href="mailto:info@psbii.ru">info@psbii.ru</a></div>
+                <div class="v">
+                    <a href="mailto:info@psbii.ru">info@psbii.ru</a>
+                </div>
             </div>
         </div>
     </div>
